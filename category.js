@@ -46,10 +46,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ════════════════════════════════════════════
-   HAMBURGER MENU (AUTO CLOSE)
+   HAMBURGER MENU
 ════════════════════════════════════════════ */
 const hamburgerBtn = document.getElementById('hamburgerBtn');
-const dropdown     = document.getElementById('dropdown');
+const dropdown = document.getElementById('dropdown');
 
 let dropdownTimeout;
 
@@ -58,24 +58,20 @@ hamburgerBtn.addEventListener('click', e => {
   dropdown.classList.toggle('open');
 });
 
-/* abrir com hover (opcional mais fluido) */
 hamburgerBtn.addEventListener('mouseenter', () => {
   dropdown.classList.add('open');
 });
 
-/* segura aberto */
 dropdown.addEventListener('mouseenter', () => {
   clearTimeout(dropdownTimeout);
 });
 
-/* fecha ao sair */
 dropdown.addEventListener('mouseleave', () => {
   dropdownTimeout = setTimeout(() => {
     dropdown.classList.remove('open');
   }, 800);
 });
 
-/* fechar clicando fora */
 document.addEventListener('click', e => {
   if (!hamburgerBtn.contains(e.target) && !dropdown.contains(e.target)) {
     dropdown.classList.remove('open');
@@ -84,54 +80,68 @@ document.addEventListener('click', e => {
 
 
 /* ════════════════════════════════════════════
-   CATEGORY MENU (AUTO CLOSE)
+   CATEGORY MENU
 ════════════════════════════════════════════ */
 const catMenuBtn = document.getElementById('catMenuBtn');
 const catMenu = document.getElementById('catMenu');
 
 let catMenuTimeout;
 
-/* clique */
+/* abrir/fechar botão */
 catMenuBtn.addEventListener('click', e => {
   e.stopPropagation();
   catMenu.classList.toggle('open');
 });
 
-/* abrir no hover */
+/* hover abre */
 catMenuBtn.addEventListener('mouseenter', () => {
   clearTimeout(catMenuTimeout);
   catMenu.classList.add('open');
 });
 
-/* manter aberto */
 catMenu.addEventListener('mouseenter', () => {
   clearTimeout(catMenuTimeout);
 });
 
-/* 🔴 FECHAR AO SAIR DO BOTÃO */
+/* fechar com delay */
 catMenuBtn.addEventListener('mouseleave', () => {
   catMenuTimeout = setTimeout(() => {
     catMenu.classList.remove('open');
   }, 800);
 });
 
-/* 🔴 FECHAR AO SAIR DO MENU */
 catMenu.addEventListener('mouseleave', () => {
   catMenuTimeout = setTimeout(() => {
     catMenu.classList.remove('open');
   }, 800);
 });
 
-/* clique fora */
+/* fechar clicando fora */
 document.addEventListener('click', e => {
   if (!catMenuBtn.contains(e.target) && !catMenu.contains(e.target)) {
     catMenu.classList.remove('open');
   }
 });
 
+/* 🔥 FIX PRINCIPAL: clicar no menu NÃO sobe mais a página */
+document.querySelectorAll('#catMenu a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const catId = link.dataset.cat;
+    const index = CATS.findIndex(c => c.id === catId);
+
+    if (index !== -1) {
+      showCat(index);
+    }
+
+    catMenu.classList.remove('open');
+  });
+});
+
 
 /* ════════════════════════════════════════════
-   LIGHTBOX (SEM MUDANÇA)
+   LIGHTBOX
 ════════════════════════════════════════════ */
 const lightbox  = document.getElementById('lightbox');
 const lbImg     = document.getElementById('lbImg');
@@ -204,7 +214,6 @@ lbImg.addEventListener('click', e => {
   }
 });
 
-/* fechar clicando fora */
 lightbox.addEventListener('click', e => {
   if (e.target === lightbox) closeLightbox();
 });
@@ -213,7 +222,6 @@ document.getElementById('lbClose').addEventListener('click', closeLightbox);
 document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
 document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
 
-/* teclado */
 document.addEventListener('keydown', e => {
   if (!lightboxOpen) return;
 
@@ -222,7 +230,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lbStep(1);
 });
 
-/* abrir imagem */
 document.addEventListener('click', e => {
   const panel = e.target.closest('.cat-panel');
   if (!panel) return;
@@ -233,12 +240,11 @@ document.addEventListener('click', e => {
   }
 });
 
-/* FADE IN */
+/* fade */
 window.addEventListener('load', () => {
   document.body.classList.add('page-loaded');
 });
 
-/* FADE OUT */
 document.querySelectorAll('a').forEach(link => {
   const href = link.getAttribute('href');
 
@@ -251,7 +257,7 @@ document.querySelectorAll('a').forEach(link => {
 
       setTimeout(() => {
         window.location.href = href;
-      }, 250); // mais rápido
+      }, 250);
     });
   }
-})
+});
