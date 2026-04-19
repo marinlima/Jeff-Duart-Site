@@ -254,29 +254,29 @@ nav {
   }
 
   .photo-col {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  }
+  .vert-name {
+    position: static;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
+    font-size: 30px;
+    margin-right: 16px;
+    order: -1;
   }
 
   .photo-img {
-    width: 240px;
-    max-width: 85vw;
-    height: auto;
-    margin: 0;
-    display: block;
+  width: 240px;
+  max-width: 75vw;
+  height: auto;
+  margin: 0;
+  display: block;
   }
-
-  .vert-name {
-    position: static;
-    transform: none;
-    writing-mode: vertical-lr;
-    font-size: 30px;
-    margin-bottom: 12px;
-  }
-
   .bio-col {
     padding-left: 0;
   }
