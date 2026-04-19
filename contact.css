@@ -254,9 +254,9 @@ nav {
   }
 
  .photo-col {
-  padding: 0 20px;
-  justify-content: center;
-  align-items: center;
+   padding: 0 24px;
+   justify-content: center;
+   align-items: center;
   }
 
   .vert-name {
@@ -270,7 +270,7 @@ nav {
 
   .photo-placeholder,
   .photo-img {
-   width: 240px;
+   width: 200px;
    max-width: 100%;
    height: auto;
    margin-top: 0;
