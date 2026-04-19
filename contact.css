@@ -8,17 +8,30 @@ body {
   background: #111111;
   color: #f2f2f2;
   font-family: 'Lato', sans-serif;
+
+  /* 🔥 ESSENCIAL: resolve nav cobrindo conteúdo */
+  padding-top: 72px;
 }
 
 /* ── NAV ── */
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 100;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 28px;
-  position: relative;
-  z-index: 20;
-  border-bottom: 1px solid #1a1a1a;
+
+  padding: 18px 24px;
+
+  background: #111111;
+  backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid #1a1a1a; /* opcional, mas ajuda visual */
 }
 
 .nav-left {
@@ -51,14 +64,18 @@ nav {
   text-decoration: none;
 }
 
+/* ── DROPDOWN ── */
 .drop {
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
+
   background: #1a1a1a;
   border: 1px solid #2a2a2a;
+
   min-width: 160px;
   z-index: 50;
+
   opacity: 0;
   pointer-events: none;
   transform: translateY(-6px);
@@ -93,7 +110,7 @@ nav {
   align-items: flex-start;
   gap: 0;
 
-  padding: 30px 70px 80px 60px; /* falso centro controlado */
+  padding: 30px 70px 80px 60px;
 }
 
 /* FOTO */
@@ -102,7 +119,6 @@ nav {
   display: flex;
   justify-content: center;
   padding-left: 56px;
-
 }
 
 .photo-img {
@@ -113,13 +129,6 @@ nav {
   margin-top: 110px;
 }
 
-.photo-placeholder {
-  width: 100%;
-  max-width: 340px;
-  aspect-ratio: 3 / 4;
-  background: linear-gradient(160deg, #252525 0%, #131313 100%);
-}
-
 /* NOME VERTICAL */
 .vert-name {
   position: absolute;
@@ -127,20 +136,20 @@ nav {
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-lr;
+
   font-family: 'Playfair Display', serif;
   font-size: 38px;
   font-weight: 700;
+
   color: #f2f2f2;
   letter-spacing: .02em;
-  line-height: 1;
-  white-space: nowrap;
 }
 
 /* BIO */
 .bio-col {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 🔥 corrigido */
+  justify-content: flex-start;
   gap: 20px;
   padding-left: 48px;
 }
@@ -160,22 +169,24 @@ nav {
   text-align: justify;
 }
 
-/* BOTÃO CENTRALIZADO */
+/* BOTÃO */
 .archive-pill {
-  grid-column: 1 / -1; /* ocupa as 2 colunas */
-  justify-self: center; /* centraliza horizontal */
+  grid-column: 1 / -1;
+  justify-self: center;
 
   margin-top: 60px;
 
   border: 1px solid #f2f2f2;
   border-radius: 999px;
+
   padding: 7px 28px;
+
   font-size: 12px;
   letter-spacing: .1em;
+
   color: #f2f2f2;
   background: transparent;
   text-decoration: none;
-  width: fit-content;
 }
 
 .archive-pill:hover {
@@ -187,11 +198,13 @@ nav {
 .s2 {
   min-height: 80vh;
   background: #111111;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px 80px;
+
+  padding: 80px 24px;
 }
 
 .s2-name {
@@ -199,49 +212,32 @@ nav {
   font-size: 44px;
   font-weight: 700;
   color: #f2f2f2;
-  letter-spacing: -.5px;
   margin-bottom: 10px;
   text-align: center;
-  width: 100%;
 }
 
 .s2-tag {
   font-size: 12px;
-  font-weight: 400;
   letter-spacing: 2.5px;
   color: #d0d0d0;
   margin-bottom: 40px;
   text-align: center;
-  width: 100%;
 }
 
 .socials {
   display: flex;
   gap: 20px;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.soc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  background: none;
-  border: none;
-  padding: 4px;
-  transition: opacity .2s;
-}
-
-.soc:hover {
-  opacity: 0.45;
 }
 
 .soc svg {
   width: 20px;
   height: 20px;
   fill: #f2f2f2;
+}
+
+.soc:hover {
+  opacity: 0.45;
 }
 
 /* ── MOBILE ── */
@@ -254,38 +250,30 @@ nav {
   }
 
   .photo-col {
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+    padding: 0;
+    justify-content: center;
+    gap: 16px;
   }
+
   .vert-name {
     position: static;
     transform: rotate(180deg);
     writing-mode: vertical-lr;
     font-size: 30px;
-    margin-right: 16px;
     order: -1;
   }
 
   .photo-img {
-  width: 240px;
-  max-width: 75vw;
-  height: auto;
-  margin: 0;
-  display: block;
+    width: 240px;
+    max-width: 75vw;
+    margin: 0;
   }
+
   .bio-col {
     padding-left: 0;
   }
 
   .s2-name {
     font-size: 32px;
-  }
-
-  .s2-tag {
-    font-size: 11px;
   }
 }

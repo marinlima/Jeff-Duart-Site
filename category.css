@@ -571,7 +571,7 @@ nav {
 
   /* hamburger mais discreto e melhor posicionado */
   .cat-menu-btn {
-    right: 6px; /* mais colado mas sem sair da tela */
+    right: 3px; /* mais colado mas sem sair da tela */
     padding: 4px;
   }
 
@@ -678,21 +678,36 @@ body.fade-out {
 @media (min-width: 1024px) {
 
   .cat-panel {
-    padding-left: 80px;
-    padding-right: 80px;
+    column-count: 4;
+    column-gap: 12px;
+    padding: 0 80px;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 
-}
-
-@media (min-width: 1024px) {
-
-  .cat-panel {
-    column-gap: 12px; /* 👈 diminui (antes era 20px) */
+  .ph-grid-multi,
+  .ph-grid-single {
+    display: contents;
   }
 
   .cat-panel img {
-    margin-bottom: 12px; /* 👈 mantém proporcional */
+    width: 100%;
+    margin-bottom: 12px;
+    break-inside: avoid;
+    display: block;
   }
-
 }
+
+/* fade page */
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
 }
