@@ -28,7 +28,7 @@ nav {
   background: #111111;
   backdrop-filter: blur(6px);
 
-  border-bottom: 1px solid #1a1a1a; /* opcional, mas ajuda visual */
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .nav-left {
@@ -277,5 +277,17 @@ nav {
   .s2-name {
     font-size: 32px;
   }
-  
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
 }
