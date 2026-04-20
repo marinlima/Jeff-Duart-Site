@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: assets/img
+public_folder: assets/img
+
+collections:
+  - name: "editorial-makeup"
+    label: "Editorial Makeup"
+    folder: "content/editorial-makeup"
+    create: true
+    fields:
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Legenda", name: "caption", widget: "string", required: false }
+
+  - name: "editorial-fashion"
+    label: "Editorial Fashion"
+    folder: "content/editorial-fashion"
+    create: true
+    fields:
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Legenda", name: "caption", widget: "string", required: false }
+
+  - name: "beauty-portraits"
+    label: "Beauty Portraits"
+    folder: "content/beauty-portraits"
+    create: true
+    fields:
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Legenda", name: "caption", widget: "string", required: false }
+
+  - name: "advertising"
+    label: "Advertising"
+    folder: "content/advertising"
+    create: true
+    fields:
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Legenda", name: "caption", widget: "string", required: false }
